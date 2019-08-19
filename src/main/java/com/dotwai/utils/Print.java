@@ -1,5 +1,7 @@
 package com.dotwai.utils;
 
+import com.dotwai.AVLTree;
+import com.dotwai.entity.AVLNode;
 import com.dotwai.entity.BinaryNode;
 
 import java.util.*;
@@ -172,6 +174,27 @@ public class Print {
         treeArr[deep][col++] = node.getValue();
     }
 
+    public static void printAVLTree(AVLNode root, int deep) {
+        col = 0;
+        int lastLayerNodeNum = (int) Math.pow(2, deep - 1);
+        int[][] treeArr = new int[deep][lastLayerNodeNum * 2];
+        traverse(root, treeArr, 0);
+        print(treeArr);
+//        printBinarySortTree(treeArr);
+    }
+
+    private static void traverse(AVLNode node, int[][] treeArr, int deep) {
+        if (node == null) {
+            return;
+        }
+        traverse(node.getLeftNode(), treeArr, deep + 1);
+        saveNode(node, treeArr, deep);
+        traverse(node.getRightNode(), treeArr, deep + 1);
+    }
+
+    private static void saveNode(AVLNode node, int[][] treeArr, int deep) {
+        treeArr[deep][col++] = node.getValue();
+    }
    /* public static void printBinarySortTree(int[][] tree) {
         for (int i = 1; i < tree.length; i++) {
             for (int j = 0; j < tree[0].length; j++) {

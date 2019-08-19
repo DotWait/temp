@@ -2,11 +2,13 @@ package com.dotwai;
 
 import static org.junit.Assert.assertTrue;
 
+import com.dotwai.entity.AVLNode;
 import com.dotwai.entity.BinaryNode;
 import com.dotwai.utils.Print;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Unit test for simple App.
@@ -88,5 +90,17 @@ public class AppTest
     @Test
     public void test(){
         System.out.println(Math.pow(2, 3));
+    }
+
+    @Test
+    public void AVLTreeTest(){
+        Random random = new Random();
+        for (int i=0;i<4;i++){
+            AVLNode avlNode = new AVLNode();
+            avlNode.setBf(0);
+            avlNode.setValue(random.nextInt(100));
+            AVLTree.insert(avlNode);
+        }
+        Print.printAVLTree(AVLTree.getRoot(), AVLTree.getDepth());
     }
 }

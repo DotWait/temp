@@ -4,9 +4,18 @@ public class AVLNode {
     private int value;
     private int count;
     private int deep;
+    private int bf;
     private AVLNode parent;
     private AVLNode leftNode;
     private AVLNode rightNode;
+
+    public int getBf() {
+        return bf;
+    }
+
+    public void setBf(int bf) {
+        this.bf = bf;
+    }
 
     public int getValue() {
         return value;
